@@ -7,8 +7,8 @@ import (
 	"log"
 	"net/http"
 
+	Con "github.com/leiendrulat/goserv/Context"
 	"github.com/rs/cors"
-
 )
 
 //used to get template stuff
@@ -50,12 +50,6 @@ func getHome(w http.ResponseWriter, r *http.Request) {
 			log.Fatalln("template didn't execute: ", err)
 		}
 
-	case "POST":
-		//go get html file
-		err := tpl.ExecuteTemplate(w, "index.html", nil)
-		if err != nil {
-			log.Fatalln("template didn't execute: ", err)
-		}
 	default:
 		fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
 	}
